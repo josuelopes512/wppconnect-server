@@ -1,14 +1,17 @@
 import { ServerOptions } from './types/ServerOptions';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default {
-  secretKey: 'THISISMYSECURETOKEN',
-  host: 'http://localhost',
-  port: '21465',
-  deviceName: 'WppConnect',
-  poweredBy: 'WPPConnect-Server',
-  startAllSession: true,
+  secretKey: process.env.SECRET_KEY,
+  host: process.env.HOST,
+  port: process.env.PORT,
+  deviceName: process.env.DEVICE_NAME,
+  poweredBy: process.env.POWERED_BY,
+  startAllSession: process.env.START_ALL_SESSIONS,
   tokenStoreType: 'file',
-  maxListeners: 15,
+  maxListeners: process.env.MAX_LISTENERS,
   customUserDataDir: './userDataDir/',
   webhook: {
     url: null,
@@ -82,17 +85,17 @@ export default {
     prefix: 'tagone-',
   },
   db: {
-    mongodbDatabase: 'tokens',
+    mongodbDatabase: process.env.MONGODB_DATABASE,
     mongodbCollection: '',
-    mongodbUser: '',
-    mongodbPassword: '',
-    mongodbHost: '',
+    mongodbUser: process.env.MONGODB_USERNAME,
+    mongodbPassword: process.env.MONGODB_PASSWORD,
+    mongodbHost: process.env.MONGODB_HOST,
     mongoIsRemote: true,
     mongoURLRemote: '',
-    mongodbPort: 27017,
-    redisHost: 'localhost',
-    redisPort: 6379,
-    redisPassword: '',
+    mongodbPort: process.env.MONGODB_PORT,
+    redisHost: process.env.REDIS_HOST,
+    redisPort: process.env.REDIS_PORT,
+    redisPassword: process.env.REDIS_PASSWORD,
     redisDb: 0,
     redisPrefix: 'docker',
   },
